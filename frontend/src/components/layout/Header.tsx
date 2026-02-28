@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { to: '/outfits', label: 'Outfits', icon: LayoutGrid },
   // { to: '/recommendations', label: 'Recommendations', icon: Sparkles },
   { to: '/tryon', label: 'Try-On', icon: Wand2 },
+  
 ];
 
 export const Header = () => {

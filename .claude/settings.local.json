@@ -44,7 +44,10 @@
       "Bash(DJANGO_SETTINGS_MODULE=config.settings.local python -c \":*)",
       "Bash(xargs grep -l \"presigned\")",
       "Bash(node_modules/.bin/tsc --noEmit)",
-      "Bash(git add .gitignore amplify.yml deploy.sh BACKEND_SETUP.md FLUTTER_SETUP.md FRONTEND_SUMMARY.md GMAIL_APP_PASSWORD_GUIDE.md QUICKSTART.md QUICK_REFERENCE.md TROUBLESHOOTING.md WEB_FRONTEND_ARCHITECTURE.md backend/ frontend/ flutter_app/ nginx/ systemd/ .kiro/ .claude/)"
+      "Bash(git add .gitignore amplify.yml deploy.sh BACKEND_SETUP.md FLUTTER_SETUP.md FRONTEND_SUMMARY.md GMAIL_APP_PASSWORD_GUIDE.md QUICKSTART.md QUICK_REFERENCE.md TROUBLESHOOTING.md WEB_FRONTEND_ARCHITECTURE.md backend/ frontend/ flutter_app/ nginx/ systemd/ .kiro/ .claude/)",
+      "Bash(git commit:*)",
+      "Bash(git push origin master)",
+      "Bash(gh pr:*)"
     ]
   }
 }
