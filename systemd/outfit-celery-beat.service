@@ -1,0 +1,28 @@
+# ============================================================
+# Systemd Service — Celery Beat (scheduled tasks)
+# Place at:  /etc/systemd/system/outfit-celery-beat.service
+# Enable:    sudo systemctl enable outfit-celery-beat
+# ============================================================
+
+[Unit]
+Description=Outfit Stylist Celery Beat Scheduler
+After=network.target redis.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/outfit-app/backend
+EnvironmentFile=/home/ubuntu/outfit-app/backend/.env
+ExecStart=/home/ubuntu/outfit-app/venv/bin/celery \
+    -A config.celery beat \
+    --loglevel=info \
+    --scheduler django_celery_beat.schedulers:DatabaseScheduler
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=outfit-celery-beat
+
+[Install]
+WantedBy=multi-user.target

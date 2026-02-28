@@ -1,0 +1,32 @@
+# ============================================================
+# Systemd Service — Django/Gunicorn backend
+# Place at:  /etc/systemd/system/outfit-stylist.service
+# Enable:    sudo systemctl enable outfit-stylist
+# Start:     sudo systemctl start outfit-stylist
+# ============================================================
+
+[Unit]
+Description=Outfit Stylist Django Backend (Gunicorn + Uvicorn)
+After=network.target postgresql.service redis.service
+Wants=postgresql.service redis.service
+
+[Service]
+Type=notify
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/outfit-app/backend
+EnvironmentFile=/home/ubuntu/outfit-app/backend/.env
+ExecStart=/home/ubuntu/outfit-app/venv/bin/gunicorn \
+    --config /home/ubuntu/outfit-app/backend/gunicorn.conf.py \
+    config.asgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=outfit-stylist
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,32 @@
+# ============================================================
+# Systemd Service — Celery Worker
+# Place at:  /etc/systemd/system/outfit-celery.service
+# Enable:    sudo systemctl enable outfit-celery
+# ============================================================
+
+[Unit]
+Description=Outfit Stylist Celery Worker
+After=network.target redis.service
+
+[Service]
+Type=forking
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/outfit-app/backend
+EnvironmentFile=/home/ubuntu/outfit-app/backend/.env
+ExecStart=/home/ubuntu/outfit-app/venv/bin/celery \
+    -A config.celery worker \
+    --loglevel=info \
+    --concurrency=2 \
+    --pidfile=/tmp/outfit-celery.pid \
+    --logfile=/var/log/outfit-celery.log
+ExecStop=/home/ubuntu/outfit-app/venv/bin/celery \
+    -A config.celery control shutdown
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=outfit-celery
+
+[Install]
+WantedBy=multi-user.target

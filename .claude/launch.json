@@ -1,0 +1,22 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/vite/bin/vite.js", "--port", "3000", "--host", "0.0.0.0"],
+      "port": 3000,
+      "cwd": "frontend"
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": ["config.asgi:application", "--host", "0.0.0.0", "--port", "8000", "--reload"],
+      "port": 8000,
+      "cwd": "backend",
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "config.settings.local"
+      }
+    }
+  ]
+}

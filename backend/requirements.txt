@@ -1,0 +1,32 @@
+# Django
+Django==5.1.4
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
+django-cors-headers==4.6.0
+django-filter==24.3
+django-environ==0.11.2
+
+# AWS
+boto3==1.35.81
+django-storages==1.14.4
+
+# FastAPI
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+websockets==14.1
+
+# Image Processing (thumbnails, cropping in wardrobe pipeline)
+Pillow==11.0.0
+numpy>=1.26.4
+
+# Auth
+google-auth==2.37.0
+google-auth-oauthlib==1.2.1
+PyJWT==2.10.1
+
+# Virtual Try-On
+gradio_client==1.5.4
+
+# Utilities
+python-dotenv==1.0.1
+whitenoise==6.8.2
