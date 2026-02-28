@@ -47,7 +47,12 @@
       "Bash(git add .gitignore amplify.yml deploy.sh BACKEND_SETUP.md FLUTTER_SETUP.md FRONTEND_SUMMARY.md GMAIL_APP_PASSWORD_GUIDE.md QUICKSTART.md QUICK_REFERENCE.md TROUBLESHOOTING.md WEB_FRONTEND_ARCHITECTURE.md backend/ frontend/ flutter_app/ nginx/ systemd/ .kiro/ .claude/)",
       "Bash(git commit:*)",
       "Bash(git push origin master)",
-      "Bash(gh pr:*)"
+      "Bash(gh pr:*)",
+      "Bash(git add frontend/.env.production)",
+      "Bash(git add amplify.yml)",
+      "Bash(git add frontend/tsconfig.json frontend/src/vite-env.d.ts)",
+      "Bash(git add frontend/src/components/auth/LoginForm.tsx frontend/src/components/auth/RegisterForm.tsx)",
+      "Bash(git add backend/apps/users/views.py backend/config/settings/production.py frontend/src/components/auth/LoginForm.tsx frontend/src/components/auth/RegisterForm.tsx)"
     ]
   }
 }
