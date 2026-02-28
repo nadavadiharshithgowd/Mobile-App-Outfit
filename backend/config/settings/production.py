@@ -5,6 +5,8 @@ from .base import *
 # ─────────────────────────────────────────────
 DEBUG = False
 
+ALLOW_DEV_ENDPOINTS = env.bool('ALLOW_DEV_ENDPOINTS', default=False)
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['api.yourdomain.com'])
 
 SECRET_KEY = env('SECRET_KEY')  # Required — no default in production

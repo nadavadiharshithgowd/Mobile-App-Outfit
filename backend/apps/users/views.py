@@ -102,7 +102,7 @@ def dev_register_view(request):
     If the email already exists, the password is updated.
     Only available when DEBUG=True.
     """
-    if not settings.DEBUG:
+    if not settings.DEBUG and not getattr(settings, 'ALLOW_DEV_ENDPOINTS', False):
         return Response(
             {'detail': 'Not available in production.'},
             status=status.HTTP_403_FORBIDDEN,
@@ -142,7 +142,7 @@ def dev_login_view(request):
     the test account is auto-created on first use — no manual setup needed.
     Only available when DEBUG=True. Returns 403 in production.
     """
-    if not settings.DEBUG:
+    if not settings.DEBUG and not getattr(settings, 'ALLOW_DEV_ENDPOINTS', False):
         return Response(
             {'detail': 'Not available in production.'},
             status=status.HTTP_403_FORBIDDEN,
